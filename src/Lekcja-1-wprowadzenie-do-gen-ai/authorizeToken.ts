@@ -1,5 +1,5 @@
-import {values} from '../utils/getCommandArgs';
-
+import type { TaskNameType } from "../types/commonTypes";
+import { values } from "../utils/getCommandArgs";
 
 type AuthorizeResponseType = {
     code: number;
@@ -16,9 +16,12 @@ const isAuthorizeToken = (response: unknown): response is AuthorizeResponseType 
 }
 
 // function make API POST request to get authorization token
-const getAuthorizeToken = async ({ taskName }) => {
+export const getAuthorizeToken = async ({ taskName }: TaskNameType) => {
     try {
-        const apikey = await ( await fetch(`${process.env.API_URL}/${taskName}`, {
+
+        if( taskName === undefined) throw Error("Task name is undefined");
+
+        const apikey = await ( await fetch(`${process.env.API_URL}/token/${taskName}`, {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json',
@@ -28,13 +31,14 @@ const getAuthorizeToken = async ({ taskName }) => {
             }),
         })).json();
 
-        if(isAuthorizeToken(apikey)){
-            return apikey.token;
+        if(!isAuthorizeToken(apikey)){
+            throw Error("API response is not valid");
         }
+        return apikey.token;
         
     } catch (error) {
         console.error('Error while fetching authorization token', error);
     }
 }
 
-console.log(`TOKEN: ${await getAuthorizeToken(values)}`);
+console.log(await getAuthorizeToken(values));
