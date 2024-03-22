@@ -1,5 +1,5 @@
 // function which send task answer to the server
-export const sendAnswer = async (token: string, answer: string) => {
+export const sendAnswer = async (token: string, answer: unknown) => {
     try {
         const answerResponse = await (await fetch(`${process.env.API_URL}/answer/${token}`, {
             method: 'POST',
@@ -8,7 +8,7 @@ export const sendAnswer = async (token: string, answer: string) => {
                 'Authorization': `Bearer ${token}`,
             },
             body: JSON.stringify({
-                answer
+                answer: answer
             })
         })).json();
         return answerResponse;
