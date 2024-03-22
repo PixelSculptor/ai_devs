@@ -6,5 +6,5 @@ export type TaskNameType = {
 export type TaskResponse = {
     code: number;
     msg: string;
-    cookie: string;
+    input: string[]
 }
