@@ -16,7 +16,7 @@ const isAuthorizeToken = (response: unknown): response is AuthorizeResponseType 
 }
 
 // function make API POST request to get authorization token
-export const getAuthorizeToken = async ({ taskName }: TaskNameType): Promise<string> => {
+export const getAuthorizeToken = async ({ taskName }: TaskNameType): Promise<string | undefined> => {
     try {
 
         if( taskName === undefined) throw Error("Task name is undefined");

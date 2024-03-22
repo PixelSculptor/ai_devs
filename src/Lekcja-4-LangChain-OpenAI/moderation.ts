@@ -14,6 +14,7 @@ const openai = new OpenAI({
 async function moderation(){
     try {
         const token = await getAuthorizeToken(values);
+        if(token === undefined) throw Error("Token is undefined");
         const task = await getTaskDescription(token);
 
         if(task === undefined) throw Error("Task is undefined");

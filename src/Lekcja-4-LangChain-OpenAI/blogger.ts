@@ -6,9 +6,6 @@ import { sendAnswer } from "../Lekcja-1-wprowadzenie-do-gen-ai/sendAnswer";
 import { getAuthorizeToken } from "../Lekcja-1-wprowadzenie-do-gen-ai/authorizeToken";
 import { getPizzaBlogChapter } from "./pizzaCook";
 
-const openai = new OpenAI({
-    apiKey: Bun.env.OPEN_AI_KEY,
-});
 
 async function blogger(){
     try {
