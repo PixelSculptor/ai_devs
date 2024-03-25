@@ -28,7 +28,7 @@ async function liar() {
             body: formData
         })).json();
 
-        if(isTaskResponse(answer) && answer.code === 0){
+        if(isTaskResponse(answer) && answer.code === 0 && 'answer' in answer && typeof answer.answer === 'string'){
 
             console.log('answer: ', answer.answer);
             const guardFlag = await guardRail(answer.answer);
