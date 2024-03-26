@@ -6,5 +6,6 @@ export type TaskNameType = {
 export type TaskResponse = {
     code: number;
     msg: string;
-    input: string[]
+    input: string[];
+    question?: string;
 }
