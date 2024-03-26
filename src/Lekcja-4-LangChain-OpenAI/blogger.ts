@@ -1,4 +1,3 @@
-import OpenAI from "openai";
 import { values } from "../utils/getCommandArgs";
 
 import { getTaskDescription } from "../Lekcja-1-wprowadzenie-do-gen-ai/getTaskDescription";
