@@ -2,7 +2,7 @@ import { values } from '../utils/getCommandArgs';
 import { getAuthorizeToken } from '../Lekcja-1-wprowadzenie-do-gen-ai/authorizeToken';
 import { getTaskDescription } from '../Lekcja-1-wprowadzenie-do-gen-ai/getTaskDescription';
 import { sendAnswer } from '../Lekcja-1-wprowadzenie-do-gen-ai/sendAnswer';
-import { textToSpeach } from './textToSpeach';
+import { textToSpeech } from './textToSpeech';
 
 const getResourceUrl = (text: string) => {
     const regex = /(https?:\/\/[^\s]+)/g;
@@ -19,7 +19,7 @@ async function whisperTask() {
         const token = await getAuthorizeToken(values);
         const task = await getTaskDescription(token);
         const url = getResourceUrl(task.msg);
-        const transcription = await textToSpeach(url);
+        const transcription = await textToSpeech(url);
         // console.log('transcription:', transcription);
         const answer = await sendAnswer(token, transcription);
         console.log('answer:', answer);
