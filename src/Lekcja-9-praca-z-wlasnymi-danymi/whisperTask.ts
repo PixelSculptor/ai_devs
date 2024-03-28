@@ -20,6 +20,7 @@ async function whisperTask() {
         const task = await getTaskDescription(token);
         const url = getResourceUrl(task.msg);
         const transcription = await textToSpeach(url);
+        // console.log('transcription:', transcription);
         const answer = await sendAnswer(token, transcription);
         console.log('answer:', answer);
     } catch (error) {
