@@ -10,6 +10,7 @@
   },
   "dependencies": {
     "@langchain/openai": "^0.0.23",
+    "fs": "^0.0.1-security",
     "langchain": "^0.1.28",
     "openai": "^4.29.2"
   }
