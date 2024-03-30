@@ -7,4 +7,4 @@ const response = await openai.images.generate({
     prompt: 'A painting easter chicken',
 });
 
-console.log(response.data);
+console.log(response);
