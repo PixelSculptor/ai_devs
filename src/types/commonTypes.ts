@@ -8,4 +8,5 @@ export type TaskResponse = {
     msg: string;
     input: string[];
     question?: string;
+    hint?: string;
 }
