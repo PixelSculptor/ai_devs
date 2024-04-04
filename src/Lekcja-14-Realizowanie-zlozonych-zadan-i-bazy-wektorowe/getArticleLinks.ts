@@ -5,6 +5,8 @@ export type ArticleLink = {
     date: string;
 };
 
+export type ArticleLinkMetadata = Omit<ArticleLink, 'info'> & { id: string };
+
 function isArticleLink(article: unknown): article is ArticleLink {
     if (typeof article !== 'object' || article === null) {
         return false;
@@ -17,9 +19,7 @@ function isArticleLink(article: unknown): article is ArticleLink {
     );
 }
 
-export async function getArticleLinks(
-    url = 'https://unknow.news/archiwum_aidevs.json',
-) {
+export async function getArticleLinks(url: string): Promise<ArticleLink[]> {
     return new Promise(async (resolve, reject) => {
         try {
             const response = await fetch(url, {
@@ -33,7 +33,7 @@ export async function getArticleLinks(
                 throw new Error('Error while fetching data');
             }
             const data = await response.json();
-            if(!Array.isArray(data) || !data.every(isArticleLink)) {
+            if (!Array.isArray(data) || !data.every(isArticleLink)) {
                 throw new Error('Invalid data format');
             }
             const links = data;
