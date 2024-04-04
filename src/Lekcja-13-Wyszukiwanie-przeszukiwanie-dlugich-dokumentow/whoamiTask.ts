@@ -1,6 +1,6 @@
-import { values } from '../utils/getCommandArgs';
+import * as fs from 'fs';
 
-import fs from 'fs';
+import { values } from '../utils/getCommandArgs';
 import * as resolveTaskUtils from '../Lekcja-1-wprowadzenie-do-gen-ai/index';
 import { guessWho } from './guessWho';
 
@@ -19,7 +19,6 @@ async function whoamiTask() {
         }
         const answer = await resolveTaskUtils.sendAnswer(token, character);
         if (answer.code === -777) {
-            console.log(answer);
             await resolveTaskUtils.getAuthorizeToken(values);
             throw new Error(answer.msg);
         } else {
@@ -29,17 +28,20 @@ async function whoamiTask() {
                 `\nNumber of needed hints: ${numberOfNeededHints}`,
             );
             fs.appendFileSync(
-                './src/Lekcja-13-Wyszukiwanie-przeszukiwanie-dlugich-dokumentow/recognizeResults.txt',
-                `${numberOfNeededHints}\n`,
+                'src/Lekcja-13-Wyszukiwanie-przeszukiwanie-dlugich-dokumentow/recognizeResults.txt',
+                `\nNumber of needed hints: ${numberOfNeededHints}`,
             );
         }
     } catch (error: unknown) {
         if (error instanceof Error) {
             console.error('Error while running whoamiTask: ', error.message);
+            fs.appendFileSync(
+                'src/Lekcja-13-Wyszukiwanie-przeszukiwanie-dlugich-dokumentow/recognizeResults.txt',
+                `\nBad answer`,
+            );
         } else {
             console.error('Error while running whoamiTask: ', error);
         }
-        fs.appendFileSync('recognizeResults.txt', `Bad answer\n`);
     }
 }
 
