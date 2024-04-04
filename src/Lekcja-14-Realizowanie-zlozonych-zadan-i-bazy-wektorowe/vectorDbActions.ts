@@ -24,6 +24,11 @@ export async function importDataToDB(links: ArticleLink[]) {
             }
             let documents: Document[] = [];
             const collectionInfo = await qdrant.getCollection(COLLECTION_NAME);
+
+            if (collectionInfo.points_count === links.length) {
+                resolve(true);
+            }
+
             if (!collectionInfo.points_count) {
                 // Read data:
                 documents = links.map((link: ArticleLink) => {

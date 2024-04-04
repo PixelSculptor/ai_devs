@@ -5,7 +5,7 @@ export type ArticleLink = {
     date: string;
 };
 
-export type ArticleLinkMetadata = Omit<ArticleLink, 'info'> & { id: string };
+export type ArticleLinkMetadata = Omit<ArticleLink, 'info'> & {id: string};
 
 function isArticleLink(article: unknown): article is ArticleLink {
     if (typeof article !== 'object' || article === null) {
@@ -19,7 +19,9 @@ function isArticleLink(article: unknown): article is ArticleLink {
     );
 }
 
-export async function getArticleLinks(url: string): Promise<ArticleLink[]> {
+export async function getArticleLinks(
+    url:string,
+): Promise<ArticleLink[]> {
     return new Promise(async (resolve, reject) => {
         try {
             const response = await fetch(url, {
