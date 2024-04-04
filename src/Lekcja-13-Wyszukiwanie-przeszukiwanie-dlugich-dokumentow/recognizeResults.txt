@@ -1,0 +1,16 @@
+GPT-3.5
+Bad answer
+Bad answer
+Bad answer
+Bad answer
+
+GPT-4
+Bad answer
+Bad answer
+Number of needed hints: 4
+Number of needed hints: 6
+Number of needed hints: 3
+Bad answer
+Bad answer
+Number of needed hints: 4
+

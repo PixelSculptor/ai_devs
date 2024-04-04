@@ -6,9 +6,10 @@ import {
     type MessageContent,
 } from 'langchain/schema';
 import { MemoryVectorStore } from 'langchain/vectorstores/memory';
+import { values } from '../utils/getCommandArgs';
 
 const documents: Document[] = [];
-const chat = new ChatOpenAI({ modelName: 'gpt-3.5-turbo' });
+const chat = new ChatOpenAI({ modelName: values.modelName });
 const query = 'Zgadnij znaną postać';
 
 export async function guessWho(hint: string): Promise<string> {
