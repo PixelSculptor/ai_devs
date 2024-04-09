@@ -3,7 +3,6 @@ import { OpenAIEmbeddings } from '@langchain/openai';
 import { v4 as uuidv4 } from 'uuid';
 import { QdrantClient } from '@qdrant/js-client-rest';
 import type { ArticleLink, ArticleLinkMetadata } from './getArticleLinks';
-import { resolve } from 'bun';
 
 const COLLECTION_NAME = 'unknown_Links';
 

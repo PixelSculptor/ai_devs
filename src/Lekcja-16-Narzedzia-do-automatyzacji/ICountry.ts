@@ -114,3 +114,8 @@ export interface PostalCode {
     format: string;
     regex: string;
 }
+
+export type CountryPopulation = {
+    name: string,
+    population: number,
+}
