@@ -15,7 +15,7 @@ export const currencyValueSchema = {
 
 export const countryInfoSchema = {
     name: 'getInfoAboutCountry',
-    description: 'Get information about country name in English',
+    description: 'Get information about country.',
     parameters: {
         type: 'object',
         properties: {
