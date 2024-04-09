@@ -65,6 +65,7 @@ export const getInfoAboutCountry = async (
                 population,
                 name: { common },
             } = data[0];
+
             const populationCountry: CountryPopulation = {
                 name: common,
                 population,
