@@ -9,4 +9,5 @@ export type TaskResponse = {
     data?: unknown;
     question?: string;
     hint?: string;
+    url?: string;
 };
