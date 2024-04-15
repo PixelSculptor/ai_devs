@@ -11,3 +11,14 @@ export type TaskResponse = {
     hint?: string;
     url?: string;
 };
+
+export type ImageMetadata = TaskResponse & {
+    text: string;
+    image: string;
+    service: string;
+};
+
+export type ImageResponse = {
+    requestId: string;
+    href: string;
+};
